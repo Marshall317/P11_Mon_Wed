@@ -1,0 +1,204 @@
+#include <iostream>
+using namespace std;
+
+//возвращаемое значение - int, void(пустота), bool, double, float
+
+void print()
+{
+	//...
+	cout << "Save game\n";
+}
+
+int sum(int a, int b)
+{
+	int all_sum = a + b;
+	cout << "a + b = " << all_sum << endl;
+	return all_sum;
+}
+
+================================================================================
+
+int main()
+{
+	int a;
+	cout << "Input first number: ";
+	cin >> a;//5
+
+	int b;
+	cout << "Input second number: ";
+	cin >> b;//10
+
+	int all_sum = sum(a, b);
+	cout << all_sum << endl;
+
+	//cout << sum(a, b);
+	
+
+	return 0;
+}
+
+================================================================================#include <iostream>
+using namespace std;
+
+int sum(int begin, int end)
+{
+	int all_sum = 0;
+
+	while (begin <= end)
+	{
+		all_sum += begin;
+		begin++;
+	}
+	return all_sum;
+}
+
+int main()
+{
+	int begin;
+	cout << "Input first number: ";
+	cin >> begin;//5
+
+	int end;
+	cout << "Input second number: ";
+	cin >> end;//15
+
+	cout<<"Sum: "<<sum(begin, end);
+	
+
+	return 0;
+}
+
+
+================================================================================
+#include <iostream>
+using namespace std;
+
+int bigger(int first, int second)
+{
+	/*if (first > second)
+		return first;
+	else
+		return second;*/
+
+	return first > second ? first : second;
+}
+
+int main()
+{
+	int first;
+	cout << "Input first number: ";
+	cin >> first;//5
+
+	int second;
+	cout << "Input second number: ";
+	cin >> second;//15
+
+	cout << bigger(first, second) << endl;
+
+	return 0;
+}
+
+
+================================================================================
+#include <iostream>
+using namespace std;
+
+void input(int array[5])
+{
+	cout << "\nInput:\n";
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Input number: ";
+		cin >> array[i];
+	}
+}
+
+void change(int array[5])
+{
+	cout << "\nChange\n";
+	for (int i = 0; i < 5; i++)
+	{
+		array[i]++;
+	}
+}
+
+void output(int array[5])
+{
+	cout << "\nOutput:\n";
+	for (int i = 0; i < 5; i++)
+	{
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
+
+int main()
+{
+	int array[5];
+
+	input(array);
+	output(array);
+
+	change(array);
+	output(array);
+
+	return 0;
+}
+
+================================================================================
+#include <iostream>
+using namespace std;
+
+void input(int array[10])
+{
+	srand(time(NULL));
+	for (int i = 0; i < 10; i++)
+	{
+		array[i] = rand() % 100 + 1;//1..100
+	}
+}
+
+void output(int array[10])
+{
+	for (int i = 0; i < 10; i++)
+	{
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
+
+void sortHalf(int array[10])
+{
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = i; j < 10; j++)
+		{
+			if (i < 5)
+			{
+				if (array[i] < array[j])
+				{
+					swap(array[i], array[j]);
+				}
+			}
+			else
+			{
+				if (array[i] > array[j])
+				{
+					swap(array[i], array[j]);
+				}
+			}
+		}
+	}
+}
+
+int main()
+{
+	int array[10];
+	input(array);
+	output(array);
+
+	sortHalf(array);
+	output(array);
+
+	return 0;
+}
