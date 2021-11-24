@@ -1,0 +1,173 @@
+#include <iostream>
+using namespace std;
+
+void main_Menu()
+{
+	cout << "1 - Piki\n";
+	cout << "2 - Chervi\n";
+	cout << "3 - Boobi\n";
+	cout << "4 - Kresti\n";
+	cout << "Input your choice: ";
+}
+
+void second_Menu()
+{
+	cout << "6 - 6\n";
+	cout << "7 - 7\n";
+	cout << "8 - 8\n";
+	cout << "9 - 9\n";
+	cout << "10 - 10\n";
+	cout << "A - 11\n";
+	cout << "B - 12\n";
+	cout << "Q - 13\n";
+	cout << "K - 14\n";
+	cout << "Input your choice: ";
+}
+
+void drawCard(int choice, int number)
+{
+	char array[15][10];
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (i == 0 || j == 0 || i == 14 || j == 9)
+				array[i][j] = '*';
+
+			else
+				array[i][j] = ' ';
+		}
+	}
+
+
+	switch (number)
+	{
+	case 6:
+		array[1][1] = '6';
+		break;
+	case 7:
+		array[1][1] = '7';
+		break;
+	case 8:
+		array[1][1] = '8';
+		break;
+	case 9:
+		array[1][1] = '9';
+		break;
+	case 10:
+		array[1][1] = '10';
+		break;
+	case 11:
+		array[1][1] = 'A';
+		break;
+	case 12:
+		array[1][1] = 'B';
+		break;
+	case 13:
+		array[1][1] = 'Q';
+		break;
+	case 14:
+		array[1][1] = 'K';
+		break;
+	default:
+		break;
+	}
+
+	
+	switch (choice)
+	{
+	case 1:
+		array[2][1] = '♠';
+		break;
+	case 2:
+		array[2][1] = '♥';
+		break;
+	case 3:
+		array[2][1] = '♦';
+		break;
+	case 4:
+		array[2][1] = '♣';
+		break;
+	default:
+		break;
+	}
+
+
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			cout << array[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+int main()
+{
+	int choice, number;
+	main_Menu();
+	cin >> choice;
+	second_Menu();
+	cin >> number;
+	drawCard(choice, number);
+	return 0;
+}
+
+
+===================================================================
+//Sleep - медленно
+#include <iostream>
+#include "Windows.h"
+using namespace std;
+
+int main()
+{
+	while (true)
+	{
+		cout << "Hello!\n";
+		Sleep(2000);
+	}
+
+	return 0;
+}
+
+==============================================================
+#include <iostream>
+using namespace std;
+
+//Параметры по умольчанию
+void sum(int a = 0, int b = 0)
+{
+	cout << "a + b = " << a + b << endl;
+}
+
+int main()
+{
+	sum(5);
+
+	return 0;
+}
+
+=======================================================
+#include <iostream>
+using namespace std;
+
+void hello()
+{
+	//Статическая переменная
+	static int size = 0;
+	cout << "Hello World\n";
+	size++;
+	cout << "size: " << size << endl;
+}
+
+int main()
+{
+	for (int i = 0; i < 5; i++)
+	{
+		hello();
+	}
+
+	return 0;
+}
