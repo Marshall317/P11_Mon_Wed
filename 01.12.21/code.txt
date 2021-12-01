@@ -1,0 +1,143 @@
+#include <iostream>
+using namespace std;
+
+//перегрузка функции
+
+int sum(int a, int b)
+{
+	return a + b;
+}
+
+double sum(double a, double b)
+{
+	return a + b;
+}
+
+int sum(int a, int b, int c)
+{
+	return a + b + c;
+}
+
+double sum(double a, double b, double c)
+{
+	return a + b + c;
+}
+
+int main()
+{	
+	cout << "a + b = " << sum(5, 6) << endl;
+	cout << "a + b = " << sum(5.6, 6.5) << endl;
+	cout << "a + b + c = " << sum(4, 5, 6) << endl;
+	cout << "a + b + c = " << sum(3.5, 4.5, 5.6) << endl;
+
+	return 0;
+}
+
+
+================================================================
+#include <iostream>
+using namespace std;
+
+//Шаблоны функции
+//Синтаксис
+template <typename T>
+
+T sum(T a, T b)
+{
+	return a + b;
+}
+
+template <typename T1>
+T1 _max(T1 a, T1 b)
+{
+	return a > b ? a : b;
+}
+
+int main()
+{	
+	cout << "a + b = " << sum(5, 6) << endl;
+	cout << "a + b = " << sum(5.6, 6.5) << endl;
+	
+	string word = "hello world!";
+	string word2 = "Bye world!\n";
+
+	cout << "NEW WORD: " << sum(word, word2);
+
+
+	cout << _max(5, 6) << endl;
+
+
+	return 0;
+}
+
+=================================================
+#include <iostream>
+using namespace std;
+
+//Рекурсия
+int fact(int N)//1
+{
+	if (N == 0 || N == 1)
+		return 1;
+	else
+		return N * fact(N - 1);//5 * 4 * 3 * 2 * 1 = 120
+}
+
+int fiban(int N)
+{
+	if (N == 0)
+		return 0;
+	else if (N == 1)
+		return 1;
+	else
+		return fiban(N - 1) + fiban(N - 2);
+}
+
+int main()
+{	
+	
+	cout << fact(5) << endl;
+
+	cout << fiban(5) << endl;
+
+	return 0;
+}
+
+===============================================
+#include <iostream>
+using namespace std;
+
+//int _pow(int x, int y)//x = 5, y = 3
+//{
+//	int sum = 1;
+//	for (int i = 0; i < y; i++)
+//	{
+//		sum *= x;//x*x*x
+//	}
+//	return sum;
+//}
+
+//int _pow(int x, int y)//x = 5, y = 3
+//{
+//	int sum = 1;
+//	for (int i = y; i > 0; i--)
+//	{
+//		sum *= x;//x*x*x
+//	}
+//	return sum;
+//}
+
+int _pow(int x, int y)
+{
+	if (y == 0)
+		return 1;
+	else
+		return x * _pow(x, y - 1);
+}
+
+int main()
+{	
+	cout << _pow(12, 2) << endl;
+
+	return 0;
+}
