@@ -1,0 +1,104 @@
+#include <iostream>
+#include <string>//getline()
+using namespace std;
+int main()
+{
+	string login;
+	int password;
+	//login -> example@gmail.com
+	//password -> ******
+
+	cout << "Input password: ";
+	cin >> password;//
+	cout << "Your password: " << password << endl;
+
+	cout << "Input Login: ";
+	cin.ignore(32765, '\n');
+	getline(cin, login);//cin >> login;
+	cout << "Your Login: " << login << endl;
+
+	return 0;
+}
+======================================================
+#include <iostream>
+#include <string>//getline()
+#include <fstream>//Работа *.text file - fstream
+using namespace std;
+
+void reg()
+{
+	//Запрашиваем Login
+	string login;
+	cout << "Input New Login: ";
+	cin >> login;
+
+	//Запрашиваем Password
+	string password;
+	cout << "Input New Password: ";
+	cin >> password;
+
+	//Создание *.text-file
+	ofstream myFile("database.txt", ios::app);
+	myFile << login + " " + password + "\n";
+}
+
+void log()
+{
+	//Запрашиваем Login
+	string login;
+	cout << "Input Login: ";
+	cin >> login;
+
+	//Запрашиваем Password
+	string password;
+	cout << "Input Password: ";
+	cin >> password;
+
+	//Reading file
+	ifstream myFile("database.txt");
+	string str;
+	cin.ignore(32765, '\n');
+
+	string _login, _password;
+	while (myFile)
+	{
+		getline(myFile, str);//admin1 admin1
+		//your code...
+	}
+}
+
+void menu()
+{
+	cout << "\n=======================================================\n";
+	cout << "                 1 - REGISTRATION\n";
+	cout << "                 2 - LOGIN\n";
+	cout << "                 0 - EXIT\n";
+	cout << "=======================================================\n";
+	cout << "Input your choice: ";
+
+}
+
+int main()
+{
+	int choice;
+	do
+	{
+		menu();
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			reg();
+			break;
+		case 2:
+			log();
+			break;
+		case 0:
+			cout << "\t\tGOODBYE!!!";
+			break;
+		default:
+			break;
+		}
+	} while (choice != 0);
+	return 0;
+}
