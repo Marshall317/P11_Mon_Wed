@@ -1,0 +1,200 @@
+#include <iostream>
+using namespace std;
+
+int foo()
+{
+	return 7;
+}
+
+int boo()
+{
+	return 8;
+}
+
+int main()
+{
+	int(*ptrFunc)() = foo;
+
+	cout << "ptrFunc: " << ptrFunc << "\t" << "foo: " << foo << endl;
+
+	cout << "ptrFunc->call(): "<<ptrFunc() << "\t" << "foo->call(): " << foo() << endl;
+
+	return 0;
+}
+
+===============================================================================================
+#include <iostream>
+using namespace std;
+
+void input(int* array, const int Size)
+{
+	srand(time(NULL));
+	for (int i = 0; i < Size; i++)
+		array[i] = rand() % 20;
+}
+
+void output(int* array, const int Size)
+{
+	for (int i = 0; i < Size; i++)
+		cout << array[i] << " ";
+	cout << endl;
+}
+
+bool ascending(int a, int b)
+{
+	return a > b ? true : false;
+}
+
+bool descending(int a, int b)
+{
+	return a < b ? true : false;
+}
+
+void sort(int* array, const int Size, bool (* ptrFunc)(int, int))
+{
+	for (int i = 0; i < Size; i++)
+	{
+		for (int j = i + 1; j < Size; j++)
+		{
+			if (ptrFunc(array[i], array[j]))
+				swap(array[i], array[j]);
+		}
+	}
+}
+
+int main()
+{
+	const int Size = 5;
+	int* array = new int[Size];
+
+	input(array, Size);
+	output(array, Size);
+
+	sort(array, Size, ascending);
+	output(array, Size);
+
+	sort(array, Size, descending);
+	output(array, Size);
+
+	delete[] array;
+	return 0;
+}
+
+=============================================================
+#include <iostream>
+using namespace std;
+
+struct Person
+{
+	string name;//Имя
+	double weight;//Вес
+	double height;//Рост
+	int age;//Возраст
+};
+
+int main()
+{
+	Person Danil;
+	Danil.age = 16;
+	Danil.name = "Danil";
+	Danil.height = 183.6;
+	Danil.weight = 65.3;
+
+	Person Egor;
+	Egor.age = 15;
+	Egor.name = "Egor";
+	Egor.height = 182;
+	Egor.weight = 85;
+
+	return 0;
+}
+
+===================================================================
+#include <iostream>
+using namespace std;
+
+struct Employee
+{
+	short id;
+	int age;
+	double salary;
+};
+
+void fillEmployee(Employee& employee)
+{
+	cout << "Input id: ";
+	cin >> employee.id;
+
+	cout << "Input age: ";
+	cin >> employee.age;
+	
+	cout << "Input salary: ";
+	cin >> employee.salary;
+}
+
+void infoEmployee(Employee& employee)
+{
+	cout << "==================================================\n";
+	cout << "Id: " << employee.id << endl;
+	cout << "Age: " << employee.age << endl;
+	cout << "Salary: " << employee.salary << endl;
+	cout << "==================================================\n\n";
+}
+
+int main()
+{
+	Employee Danil;
+	fillEmployee(Danil);
+	infoEmployee(Danil);
+
+	Employee Pavel;
+	fillEmployee(Pavel);
+	infoEmployee(Pavel);
+
+	return 0;
+}
+
+====================================================================
+#include <iostream>
+using namespace std;
+
+struct Employee
+{
+	short id;
+	int age;
+	double salary;
+};
+
+void fillEmployee(Employee& employee)
+{
+	employee.id = rand();
+	employee.age = (rand() % 62) + 18;
+	employee.salary = (rand() % 9900) + 100;
+	if (employee.age > 40)
+	{
+		employee.salary += 1000;
+	}
+}
+
+void infoEmployee(Employee& employee)
+{
+	cout << "==================================================\n";
+	cout << "Id: " << employee.id << endl;
+	cout << "Age: " << employee.age << endl;
+	cout << "Salary: " << employee.salary << endl;
+	cout << "==================================================\n\n";
+}
+
+int main()
+{
+	srand(time(NULL));
+	Employee employes[10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		fillEmployee(employes[i]);
+		infoEmployee(employes[i]);
+	}
+
+	return 0;
+}
